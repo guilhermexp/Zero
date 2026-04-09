@@ -12,11 +12,13 @@ const ReactCompilerConfig = {
   /* ... */
 };
 
+const isDocker = !!process.env.DOCKER_BUILD;
+
 export default defineConfig({
   plugins: [
     oxlintPlugin(),
     reactRouter(),
-    cloudflare(),
+    ...(!isDocker ? [cloudflare()] : []),
     babel({
       filter: /\.[jt]sx?$/,
       babelConfig: {

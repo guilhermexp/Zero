@@ -1,7 +1,7 @@
 import type { Config } from '@react-router/dev/config';
 
 export default {
-  ssr: false,
+  ssr: !!process.env.DOCKER_BUILD,
   buildDirectory: 'build',
   appDirectory: 'app',
   routeDiscovery: {
