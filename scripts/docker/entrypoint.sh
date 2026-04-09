@@ -7,9 +7,4 @@ set -x
 /app/scripts/replace-placeholder.sh "http://REPLACE-BACKEND-URL.com" "$NEXT_PUBLIC_BACKEND_URL"
 /app/scripts/replace-placeholder.sh "http://REPLACE-APP-URL.com" "$NEXT_PUBLIC_APP_URL"
 
-# SSR build generates build/server/index.js; fallback to server.js for SPA
-if [ -f /app/apps/mail/build/server/index.js ]; then
-  exec bun /app/apps/mail/build/server/index.js
-else
-  exec bun /app/apps/mail/server.js
-fi
+exec bun /app/apps/mail/server.js
