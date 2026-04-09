@@ -53,7 +53,7 @@ RUN cd apps/mail && pnpm run build
 FROM base AS runner
 WORKDIR /app
 
-RUN npm install -g wrangler
+RUN npm install -g wrangler bun
 
 RUN addgroup -S -g 1001 pnpm && \
     adduser -S -u 1001 nextjs -G pnpm
